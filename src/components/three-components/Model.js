@@ -53,6 +53,7 @@ class Model extends Component {
       rotationZ,
       castShadow
     } = this.props;
+
     object.position.x = positionX;
     object.position.y = positionY;
     object.position.z = positionZ;
