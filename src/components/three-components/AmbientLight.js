@@ -20,6 +20,7 @@ AmbientLight.defaultProps = {
 };
 
 AmbientLight.propTypes = {
+  scene: PropTypes.object.isRequired,
   color: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 

@@ -81,6 +81,7 @@ Model.defaultProps = {
 };
 
 Model.propTypes = {
+  scene: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
   objUrl: PropTypes.string.isRequired,
   mtlUrl: PropTypes.string.isRequired,

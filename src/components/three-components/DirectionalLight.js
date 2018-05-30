@@ -30,6 +30,7 @@ DirectionalLight.defaultProps = {
 };
 
 DirectionalLight.propTypes = {
+  scene: PropTypes.object.isRequired,
   color: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   intensity: PropTypes.number,
   castShadow: PropTypes.bool

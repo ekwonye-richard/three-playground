@@ -2,7 +2,7 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as THREE from 'three';
 
-class PlaneGeometry extends Component {
+class BoxGeometry extends Component {
   componentDidMount() {
     const {
       scene,
@@ -20,28 +20,23 @@ class PlaneGeometry extends Component {
       recieveShadow
     } = this.props;
 
-    const geometry = new THREE.PlaneGeometry(width, height);
-    const material = new THREE.MeshBasicMaterial({
-      color,
-      wireframe,
-      side: THREE.DoubleSide
-    });
+    const geometry = new THREE.BoxGeometry(width, height);
+    const material = new THREE.MeshBasicMaterial({ color, wireframe });
+    let box = new THREE.Mesh(geometry, material);
 
-    let plane = new THREE.Mesh(geometry, material);
-
-    plane.position.x = positionX;
-    plane.position.y = positionY;
-    plane.position.z = positionZ;
-    plane.rotation.x = rotationX;
-    plane.rotation.y = rotationY;
-    plane.rotation.z = rotationZ;
-    plane.recieveShadow = recieveShadow;
+    box.position.x = positionX;
+    box.position.y = positionY;
+    box.position.z = positionZ;
+    box.rotation.x = rotationX;
+    box.rotation.y = rotationY;
+    box.rotation.z = rotationZ;
+    box.recieveShadow = recieveShadow;
 
     if (name) {
-      plane.name = name;
+      box.name = name;
     }
 
-    scene.add(plane);
+    scene.add(box);
   }
 
   render() {
@@ -49,7 +44,7 @@ class PlaneGeometry extends Component {
   }
 }
 
-PlaneGeometry.defaultProps = {
+BoxGeometry.defaultProps = {
   color: 0xffffff,
   width: 1,
   height: 1,
@@ -63,7 +58,7 @@ PlaneGeometry.defaultProps = {
   wireframe: false
 };
 
-PlaneGeometry.propTypes = {
+BoxGeometry.propTypes = {
   scene: PropTypes.object.isRequired,
   name: PropTypes.string,
   color: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -79,4 +74,4 @@ PlaneGeometry.propTypes = {
   wireframe: PropTypes.bool
 };
 
-export default PlaneGeometry;
+export default BoxGeometry;

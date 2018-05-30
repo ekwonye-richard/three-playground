@@ -5,8 +5,10 @@ import {
   SpotLight,
   AmbientLight,
   DirectionalLight,
-  PlaneGeometry
+  PlaneGeometry,
+  BoxGeometry
 } from './components/three-components';
+import CollisionExample from './containers/CollisionExample';
 import './App.css';
 
 class App extends Component {
@@ -32,12 +34,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <CollisionExample />
+
         <Scene
           ref={e => (this.mainScene = e)}
           // onAnimate={this.animateModel}
           fullScreen={true}
           background="#ffffff"
-          hasOrbitControls={true}
+          hasOrbitControls={false}
         >
           {scene => {
             return (

@@ -1,15 +1,17 @@
 import Scene from './Scene';
 import Model from './Model';
 import SpotLight from './SpotLight';
-import PlaneGeometry from './PlaneGeometry';
 import AmbientLight from './AmbientLight';
 import DirectionalLight from './DirectionalLight';
+import BoxGeometry from './BoxGeometry';
+import PlaneGeometry from './PlaneGeometry';
 
 export {
   Scene,
   Model,
   SpotLight,
-  PlaneGeometry,
   AmbientLight,
-  DirectionalLight
+  DirectionalLight,
+  BoxGeometry,
+  PlaneGeometry
 };
