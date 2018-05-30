@@ -25,7 +25,7 @@ class Model extends Component {
 
       let objLoader = new threeLoader.OBJLoader();
       objLoader.setMaterials(materials);
-      objLoader.load(objUrl, function (object) {
+      objLoader.load(objUrl, function(object) {
         object.name = name;
         setProps(object, true);
       });
@@ -34,15 +34,25 @@ class Model extends Component {
 
   componentDidUpdate(prevProps) {
     const { scene, name } = this.props;
-    
+
     if (prevProps !== this.props) {
       let object = scene.getObjectByName(name);
-      this.setProps(object)
+      this.setProps(object);
     }
   }
 
   setProps(object, initialRender) {
-    const { scene, scale, positionX, positionY, positionZ, rotationX, rotationY, rotationZ, castShadow } = this.props;
+    const {
+      scene,
+      scale,
+      positionX,
+      positionY,
+      positionZ,
+      rotationX,
+      rotationY,
+      rotationZ,
+      castShadow
+    } = this.props;
     object.position.x = positionX;
     object.position.y = positionY;
     object.position.z = positionZ;
@@ -50,7 +60,7 @@ class Model extends Component {
     object.rotation.y = rotationY;
     object.rotation.z = rotationZ;
     object.castShadow = castShadow;
-    scale && object.scale.set( scale, scale, scale );
+    scale && object.scale.set(scale, scale, scale);
     initialRender && scene.add(object);
   }
 

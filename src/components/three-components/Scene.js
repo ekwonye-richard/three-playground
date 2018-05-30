@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import * as THREE from 'three'
+import * as THREE from 'three';
 import Orbitcontrols from 'three-orbitcontrols';
 
 class Scene extends Component {
@@ -32,31 +32,44 @@ class Scene extends Component {
     if (this.props.fullScreen) {
       this.camera.aspect = window.innerWidth / window.innerHeight;
       this.camera.updateProjectionMatrix();
-  
-      this.renderer.setSize( window.innerWidth, window.innerHeight );
+
+      this.renderer.setSize(window.innerWidth, window.innerHeight);
     }
   }
 
   componentDidMount() {
-    const { fullScreen, width, height, background, showMapEnabled, hasOrbitControls, disableZoom } = this.props;
-    
+    const {
+      fullScreen,
+      width,
+      height,
+      background,
+      showMapEnabled,
+      hasOrbitControls,
+      disableZoom
+    } = this.props;
+
     const CANVAS_WIDTH = fullScreen ? window.innerWidth : width;
     const CANVAS_HEIGHT = fullScreen ? window.innerHeight : height;
-    
+
     this.scene = new THREE.Scene();
 
     if (background) {
-      this.scene.background = new THREE.Color( background );;
+      this.scene.background = new THREE.Color(background);
     }
 
-    this.camera = new THREE.PerspectiveCamera( 45, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
-    this.camera.position.z = 5; 
-    
+    this.camera = new THREE.PerspectiveCamera(
+      45,
+      CANVAS_WIDTH / CANVAS_HEIGHT,
+      1,
+      1000
+    );
+    this.camera.position.z = 5;
+
     this.renderer = new THREE.WebGLRenderer();
-    this.renderer.setSize( CANVAS_WIDTH, CANVAS_HEIGHT );
-    
+    this.renderer.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
+
     if (hasOrbitControls) {
-      this.controls = new Orbitcontrols( this.camera, this.renderer.domElement );
+      this.controls = new Orbitcontrols(this.camera, this.renderer.domElement);
       this.controls.enableDamping = true;
       this.controls.dampingFactor = 0.25;
       this.controls.enableZoom = !disableZoom;
@@ -67,7 +80,7 @@ class Scene extends Component {
     }
 
     this.threeWrapper.appendChild(this.renderer.domElement);
-    this.renderer.setPixelRatio( window.devicePixelRatio );
+    this.renderer.setPixelRatio(window.devicePixelRatio);
 
     this.setState({ addChildren: true });
 
@@ -85,7 +98,7 @@ class Scene extends Component {
 
     return (
       <Fragment>
-        <div ref={e => this.threeWrapper = e} />
+        <div ref={e => (this.threeWrapper = e)} />
         {addChildren && children(this.scene)}
       </Fragment>
     );

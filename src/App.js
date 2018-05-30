@@ -1,11 +1,18 @@
 import React, { Component, Fragment } from 'react';
-import { Scene, Model, SpotLight, AmbientLight, DirectionalLight, PlaneGeometry } from './components/three-components'
+import {
+  Scene,
+  Model,
+  SpotLight,
+  AmbientLight,
+  DirectionalLight,
+  PlaneGeometry
+} from './components/three-components';
 import './App.css';
 
 class App extends Component {
   constructor() {
     super();
-    
+
     this.mainScene = null;
     this.animateModel = this.animateModel.bind(this);
   }
@@ -14,7 +21,7 @@ class App extends Component {
     if (this.mainScene) {
       const scene = this.mainScene.getScene();
       let model = scene.getObjectByName('main-model');
-  
+
       if (model) {
         model.rotation.x += 0.01;
         model.rotation.y += 0.01;
@@ -26,17 +33,19 @@ class App extends Component {
     return (
       <div className="App">
         <Scene
-          ref={e => this.mainScene = e}
+          ref={e => (this.mainScene = e)}
           // onAnimate={this.animateModel}
           fullScreen={true}
           background="#ffffff"
           hasOrbitControls={true}
         >
           {scene => {
-            return scene && <Fragment>
-                <SpotLight scene={scene} />
-                <AmbientLight scene={scene} />
-                {/* <PlaneGeometry
+            return (
+              scene && (
+                <Fragment>
+                  <SpotLight scene={scene} />
+                  <AmbientLight scene={scene} />
+                  {/* <PlaneGeometry
                   color="#0088aa"
                   width={10}
                   height={10}
@@ -44,14 +53,16 @@ class App extends Component {
                   rotationY={-60}
                   recieveShadow={true}
                 /> */}
-                <Model
-                  name="main-model"
-                  objUrl="shared/Hipster-Glasses-ThePixelLab.obj"
-                  mtlUrl="shared/Hipster-Glasses-ThePixelLab.mtl"
-                  scale={0.007}
-                  scene={scene}
-                />
-              </Fragment>
+                  <Model
+                    name="main-model"
+                    objUrl="shared/Hipster-Glasses-ThePixelLab.obj"
+                    mtlUrl="shared/Hipster-Glasses-ThePixelLab.mtl"
+                    scale={0.007}
+                    scene={scene}
+                  />
+                </Fragment>
+              )
+            );
           }}
         </Scene>
       </div>

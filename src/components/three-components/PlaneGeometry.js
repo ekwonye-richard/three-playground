@@ -1,15 +1,30 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import * as THREE from 'three'
+import * as THREE from 'three';
 
 class PlaneGeometry extends Component {
   componentDidMount() {
-    const { scene, color, width, height, positionX, positionY, positionZ, rotationX, rotationY, rotationZ, recieveShadow } = this.props;
+    const {
+      scene,
+      color,
+      width,
+      height,
+      positionX,
+      positionY,
+      positionZ,
+      rotationX,
+      rotationY,
+      rotationZ,
+      recieveShadow
+    } = this.props;
 
     const geometry = new THREE.PlaneGeometry(width, height);
-    const material = new THREE.MeshBasicMaterial( {color, side: THREE.DoubleSide} );
+    const material = new THREE.MeshBasicMaterial({
+      color,
+      side: THREE.DoubleSide
+    });
 
-    let plane = new THREE.Mesh( geometry, material );
+    let plane = new THREE.Mesh(geometry, material);
 
     plane.position.x = positionX;
     plane.position.y = positionY;
@@ -18,7 +33,7 @@ class PlaneGeometry extends Component {
     plane.rotation.y = rotationY;
     plane.rotation.z = rotationZ;
     plane.recieveShadow = recieveShadow;
-    scene.add(plane)
+    scene.add(plane);
   }
 
   render() {
@@ -38,13 +53,10 @@ PlaneGeometry.defaultProps = {
   rotationY: 0,
   rotationZ: 0,
   recieveShadow: false
-}
+};
 
 PlaneGeometry.propTypes = {
-  color: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
-  ]),
+  color: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   width: PropTypes.number,
   height: PropTypes.number,
   positionX: PropTypes.number,
