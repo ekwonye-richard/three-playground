@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import * as THREE from 'three';
+import * as TWEEN from '@tweenjs/tween.js';
 import Orbitcontrols from 'three-orbitcontrols';
 
 class Scene extends Component {
@@ -17,6 +18,7 @@ class Scene extends Component {
     requestAnimationFrame(this.animate);
     onAnimate && onAnimate();
     hasOrbitControls && this.controls.update();
+    TWEEN.update();
     this.renderer.render(this.scene, this.camera);
   }
 

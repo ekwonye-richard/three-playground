@@ -2,7 +2,7 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as THREE from 'three';
 
-class PlaneGeometry extends Component {
+class SphereGeometry extends Component {
   componentDidMount() {
     const {
       scene,
@@ -10,6 +10,7 @@ class PlaneGeometry extends Component {
       name,
       color,
       wireframe,
+      radius,
       width,
       height,
       positionX,
@@ -22,35 +23,30 @@ class PlaneGeometry extends Component {
       recieveShadow
     } = this.props;
 
-    const geometry = new THREE.PlaneGeometry(width, height);
-    const material = new THREE.MeshBasicMaterial({
-      color,
-      wireframe,
-      side: THREE.DoubleSide
-    });
+    const geometry = new THREE.SphereGeometry(radius, width, height);
+    const material = new THREE.MeshBasicMaterial({ color, wireframe });
+    let sphere = new THREE.Mesh(geometry, material);
 
-    let plane = new THREE.Mesh(geometry, material);
-
-    plane.position.x = positionX;
-    plane.position.y = positionY;
-    plane.position.z = positionZ;
-    plane.rotation.x = rotationX;
-    plane.rotation.y = rotationY;
-    plane.rotation.z = rotationZ;
-    plane.recieveShadow = recieveShadow;
+    sphere.position.x = positionX;
+    sphere.position.y = positionY;
+    sphere.position.z = positionZ;
+    sphere.rotation.x = rotationX;
+    sphere.rotation.y = rotationY;
+    sphere.rotation.z = rotationZ;
+    sphere.recieveShadow = recieveShadow;
 
     if (name) {
-      plane.name = name;
+      sphere.name = name;
     }
 
     if (scale) {
-      plane.scale.set(scale, scale, scale);
+      sphere.scale.set(scale, scale, scale);
     }
 
     if (scene) {
-      scene.add(plane);
+      scene.add(sphere);
     } else if (group) {
-      group.add(plane);
+      group.add(sphere);
     }
   }
 
@@ -59,10 +55,11 @@ class PlaneGeometry extends Component {
   }
 }
 
-PlaneGeometry.defaultProps = {
+SphereGeometry.defaultProps = {
   color: 0xffffff,
-  width: 1,
-  height: 1,
+  radius: 1,
+  width: 8,
+  height: 6,
   positionX: 0,
   positionY: 0,
   positionZ: 0,
@@ -73,11 +70,12 @@ PlaneGeometry.defaultProps = {
   wireframe: false
 };
 
-PlaneGeometry.propTypes = {
+SphereGeometry.propTypes = {
   scene: PropTypes.object,
   group: PropTypes.object,
   name: PropTypes.string,
   color: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  radius: PropTypes.number,
   width: PropTypes.number,
   height: PropTypes.number,
   positionX: PropTypes.number,
@@ -91,4 +89,4 @@ PlaneGeometry.propTypes = {
   wireframe: PropTypes.bool
 };
 
-export default PlaneGeometry;
+export default SphereGeometry;

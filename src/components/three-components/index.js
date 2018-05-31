@@ -5,6 +5,9 @@ import AmbientLight from './AmbientLight';
 import DirectionalLight from './DirectionalLight';
 import BoxGeometry from './BoxGeometry';
 import PlaneGeometry from './PlaneGeometry';
+import SphereGeometry from './SphereGeometry';
+import Group from './Group';
+import { tweenProps } from './utils';
 
 export {
   Scene,
@@ -13,5 +16,8 @@ export {
   AmbientLight,
   DirectionalLight,
   BoxGeometry,
-  PlaneGeometry
+  PlaneGeometry,
+  SphereGeometry,
+  Group,
+  tweenProps
 };

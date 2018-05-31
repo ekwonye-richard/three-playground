@@ -45,27 +45,25 @@ class App extends Component {
         >
           {scene => {
             return (
-              scene && (
-                <Fragment>
-                  <SpotLight scene={scene} />
-                  <AmbientLight scene={scene} />
-                  {/* <PlaneGeometry
-                  color="#0088aa"
-                  width={10}
-                  height={10}
-                  rotationX={-510}
-                  rotationY={-60}
-                  recieveShadow={true}
-                /> */}
-                  <Model
-                    name="main-model"
-                    objUrl="shared/Hipster-Glasses-ThePixelLab.obj"
-                    mtlUrl="shared/Hipster-Glasses-ThePixelLab.mtl"
-                    scale={0.007}
-                    scene={scene}
-                  />
-                </Fragment>
-              )
+              <Fragment>
+                <SpotLight scene={scene} />
+                <AmbientLight scene={scene} />
+                {/* <PlaneGeometry
+                color="#0088aa"
+                width={10}
+                height={10}
+                rotationX={-510}
+                rotationY={-60}
+                recieveShadow={true}
+              /> */}
+                <Model
+                  name="main-model"
+                  objUrl="shared/Hipster-Glasses-ThePixelLab.obj"
+                  mtlUrl="shared/Hipster-Glasses-ThePixelLab.mtl"
+                  scale={0.007}
+                  scene={scene}
+                />
+              </Fragment>
             );
           }}
         </Scene>

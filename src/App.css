@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
 }
 
 .App-logo {
@@ -29,4 +29,90 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.game-data {
+  text-align: center;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.title {
+  margin-top: 0.3em;
+  font-size: 3em;
+}
+
+.score-board {
+  font-size: 1.3em;
+}
+
+.restart {
+  position: fixed;
+  top: 70vh;
+  width: 100%;
+  text-align: center;
+  font-size: 2em;
+  text-decoration: underline;
+}
+
+.restart code {
+  cursor: pointer;
+}
+
+.controls {
+  position: absolute;
+  width: 400px;
+  bottom: 150px;
+}
+
+.group-name {
+  text-align: center;
+  font-size: 1.4em;
+  position: relative;
+  bottom: 50px;
+}
+
+.left-controls {
+  left: 0;
+}
+
+.right-controls {
+  right: 0;
+}
+
+.keyboard {
+  padding: 30px;
+  border: 1px solid;
+  font-size: 1.2em;
+  position: relative;
+}
+
+.up {
+  left: 104px;
+}
+
+.down {
+  top: 81px;
+  right: 39px;
+}
+
+.left {
+  top: 81px;
+  right: 40px;
+}
+
+.right {
+  top: 81px;
+  right: 38px;
+}
+
+.instructions {
+  position: absolute;
+  bottom: 80px;
+  font-size: 1.2em;
+  width: 100%;
 }
